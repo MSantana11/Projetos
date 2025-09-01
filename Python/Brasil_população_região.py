@@ -1,10 +1,11 @@
+# Python - Grafico da População do Brasil por região
 # Instalado a biblioteca
 # para ler arquivos antigos excel xls - pip install xlrd
 # para graficos - pip install matplotlib
 import pandas as pd
 
 # Lendo a planilha e ignorando a primeira linha com skiprows=1
-df = pd.read_excel(f'[Caminho do Arquivo]/Brasil_População_01072024.xls', skiprows=1)
+df = pd.read_excel(f'[CAMINHO DO ARQUIVO]/Brasil_População_01072024.xls', skiprows=1)
 
 df.head()
 df.columns
@@ -29,3 +30,8 @@ for i, valor in enumerate(eixo_y):
 # remove a linha com o valor 1e7 que aparece no alto a esquerda do grafico no eixo y
 plt.ticklabel_format(style='plain', axis='y')
 plt.show()
+
+# Grafico de pizza
+plt.pie(df_lista_regiao['POPULAÇÃO ESTIMADA'], labels=df_lista_regiao['BRASIL E UNIDADES DA FEDERAÇÃO'], autopct='%1.1f%%', startangle=90)
+plt.title('Brasil - População por Região\nFonte: IBGE - Data de Referência 01/07/2024') # Adiciona um título
+plt.show() # Exibe o gráfico
